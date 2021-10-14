@@ -27,10 +27,9 @@ class AddDialog{
                         borderSide: new BorderSide(width: 1.0),
                         borderRadius: BorderRadius.circular(8.0),
                       ),
-                      // hintText: 'نام کاربری',
                       contentPadding: EdgeInsets.only(
-                        top: (MediaQuery.of(context).size.height/35)/2,
-                        bottom: (MediaQuery.of(context).size.height/35)/2,
+                        top: ResponsiveFlutter.of(context).hp(2),
+                        bottom: ResponsiveFlutter.of(context).hp(2),
                       ),
                       labelText: 'نام کاربری',
                       // border: InputBorder.none,
