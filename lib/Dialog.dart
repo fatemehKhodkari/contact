@@ -109,7 +109,8 @@ class AddDialog{
                                 image: AssetImage('assets/pic/add.png'),
                               ),
                               onPressed: (){
-                                Navigator.of(context).pop();
+                                Navigator.of(context).push(MaterialPageRoute(
+                                    builder: (context) => MainHome()));
                               },
                             ),
                             SizedBox(width: ResponsiveFlutter.of(context).wp(5),),
@@ -119,8 +120,7 @@ class AddDialog{
                                 image: AssetImage('assets/pic/remove.png'),
                               ),
                               onPressed: (){
-                                Navigator.of(context).push(MaterialPageRoute(
-                                    builder: (context) => MainHome()));
+                                Navigator.of(context).pop();
                               },
                             ),
                           ],
