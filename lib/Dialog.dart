@@ -15,7 +15,7 @@ class AddDialog{
                 insetPadding: const EdgeInsets.all(0.0),
                 actionsOverflowButtonSpacing: 0.0,
                 content: Container(
-                  height: ResponsiveFlutter.of(context).hp(60),
+                  height: ResponsiveFlutter.of(context).hp(65),
                   width: ResponsiveFlutter.of(context).wp(70),
                   child: Column(
                     children: <Widget>[
@@ -91,7 +91,40 @@ class AddDialog{
                             ),
                           ),
                         ),
+                      ),
+
+                      Padding(
+                        padding: EdgeInsets.only(
+                          top: ResponsiveFlutter.of(context).hp(5),
+                          left: ResponsiveFlutter.of(context).wp(20),
+                          right: ResponsiveFlutter.of(context).wp(20),
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: <Widget>[
+                            FloatingActionButton(
+                              backgroundColor: Colors.white,
+                              child: Image(
+                                image: AssetImage('assets/pic/add.png'),
+                              ),
+                              onPressed: (){
+
+                              },
+                            ),
+                            SizedBox(width: ResponsiveFlutter.of(context).wp(5),),
+                            FloatingActionButton(
+                              backgroundColor: Colors.white,
+                              child: Image(
+                                image: AssetImage('assets/pic/remove.png'),
+                              ),
+                              onPressed: (){
+
+                              },
+                            ),
+                          ],
+                        ),
                       )
+
                     ],
                   ),
                 )
