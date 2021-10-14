@@ -37,7 +37,7 @@ class AddDialog{
                               top: ResponsiveFlutter.of(context).hp(2),
                               bottom: ResponsiveFlutter.of(context).hp(2),
                             ),
-                            labelText: 'نام کاربری',
+                            labelText: 'نام و نام خانوادگی',
                             // border: InputBorder.none,
                             prefixIcon: Icon(Icons.person_outline,color: Colors.grey,
                               // size: 24.0
