@@ -27,6 +27,9 @@ class AddDialog{
                         ),
                         child: TextFormField(
                           keyboardType: TextInputType.name,
+                          style: TextStyle(
+                              fontSize: ResponsiveFlutter.of(context).fontSize(2.25)
+                          ),
                           autofocus: true,
                           decoration: InputDecoration(
                             border: new OutlineInputBorder(
@@ -56,7 +59,7 @@ class AddDialog{
                         child: TextFormField(
                           keyboardType: TextInputType.phone,
                           style: TextStyle(
-                            fontSize: ResponsiveFlutter.of(context).fontSize(1)
+                            fontSize: ResponsiveFlutter.of(context).fontSize(2.25)
                           ),
                           autofocus: true,
                           decoration: InputDecoration(
