@@ -15,21 +15,31 @@ class AddDialog{
                 insetPadding: const EdgeInsets.all(0.0),
                 actionsOverflowButtonSpacing: 0.0,
                 content: Container(
-                  width: 100,
-                  height: 100,
+                  height: ResponsiveFlutter.of(context).hp(60),
+                  width: ResponsiveFlutter.of(context).wp(70),
                   child: Column(
-                    children: [
-                      Container(
-                        height: 100.0,
-                        width: 100.0,
-                        color: Colors.blue,
+                    children: <Widget>[
+                  TextFormField(
+                  keyboardType: TextInputType.name,
+                    autofocus: true,
+                    decoration: InputDecoration(
+                      border: new OutlineInputBorder(
+                        borderSide: new BorderSide(width: 1.0),
+                        borderRadius: BorderRadius.circular(8.0),
                       ),
-                      SizedBox(height: 16.0,),
-                      Container(
-                        height: 24,
-                        width: 100,
-                        color: Colors.red,
-                      )
+                      // hintText: 'نام کاربری',
+                      contentPadding: EdgeInsets.only(
+                        top: (MediaQuery.of(context).size.height/35)/2,
+                        bottom: (MediaQuery.of(context).size.height/35)/2,
+                      ),
+                      labelText: 'نام کاربری',
+                      // border: InputBorder.none,
+                      prefixIcon: Icon(Icons.person_outline,color: Colors.grey,
+                        // size: 24.0
+                        size: MediaQuery.of(context).size.width/15,
+                      ),
+                    ),
+                  ),
                     ],
                   ),
                 )
