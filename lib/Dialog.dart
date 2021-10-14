@@ -19,26 +19,33 @@ class AddDialog{
                   width: ResponsiveFlutter.of(context).wp(70),
                   child: Column(
                     children: <Widget>[
-                  TextFormField(
-                  keyboardType: TextInputType.name,
-                    autofocus: true,
-                    decoration: InputDecoration(
-                      border: new OutlineInputBorder(
-                        borderSide: new BorderSide(width: 1.0),
-                        borderRadius: BorderRadius.circular(8.0),
-                      ),
-                      contentPadding: EdgeInsets.only(
-                        top: ResponsiveFlutter.of(context).hp(2),
-                        bottom: ResponsiveFlutter.of(context).hp(2),
-                      ),
-                      labelText: 'نام کاربری',
-                      // border: InputBorder.none,
-                      prefixIcon: Icon(Icons.person_outline,color: Colors.grey,
-                        // size: 24.0
-                        size: MediaQuery.of(context).size.width/15,
-                      ),
-                    ),
-                  ),
+                      Padding(
+                        padding: EdgeInsets.only(
+                          top: ResponsiveFlutter.of(context).hp(5),
+                          left: ResponsiveFlutter.of(context).wp(5),
+                          right: ResponsiveFlutter.of(context).wp(5),
+                        ),
+                        child: TextFormField(
+                          keyboardType: TextInputType.name,
+                          autofocus: true,
+                          decoration: InputDecoration(
+                            border: new OutlineInputBorder(
+                              borderSide: new BorderSide(width: 1.0),
+                              borderRadius: BorderRadius.circular(8.0),
+                            ),
+                            contentPadding: EdgeInsets.only(
+                              top: ResponsiveFlutter.of(context).hp(2),
+                              bottom: ResponsiveFlutter.of(context).hp(2),
+                            ),
+                            labelText: 'نام کاربری',
+                            // border: InputBorder.none,
+                            prefixIcon: Icon(Icons.person_outline,color: Colors.grey,
+                              // size: 24.0
+                              size: MediaQuery.of(context).size.width/15,
+                            ),
+                          ),
+                        ),
+                      )
                     ],
                   ),
                 )
