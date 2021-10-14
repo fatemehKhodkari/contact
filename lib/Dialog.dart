@@ -15,10 +15,22 @@ class AddDialog{
                 insetPadding: const EdgeInsets.all(0.0),
                 actionsOverflowButtonSpacing: 0.0,
                 content: Container(
-                  height: ResponsiveFlutter.of(context).hp(31),
+                  height: ResponsiveFlutter.of(context).hp(60),
                   width: ResponsiveFlutter.of(context).wp(70),
                   child: Column(
                     children: <Widget>[
+                      Padding(
+                        padding: EdgeInsets.only(
+                            top: ResponsiveFlutter.of(context).hp(5),
+                            left: ResponsiveFlutter.of(context).wp(5),
+                            right: ResponsiveFlutter.of(context).wp(5),
+                        ),
+                        child: CircleAvatar(
+                          backgroundColor: Colors.white,
+                          radius: ResponsiveFlutter.of(context).wp(15),
+                          backgroundImage: AssetImage('assets/pic/addphoto.png'),
+                        ),
+                      ),
                       Padding(
                         padding: EdgeInsets.only(
                           top: ResponsiveFlutter.of(context).hp(5),
