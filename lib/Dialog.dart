@@ -54,7 +54,10 @@ class AddDialog{
                           right: ResponsiveFlutter.of(context).wp(5),
                         ),
                         child: TextFormField(
-                          keyboardType: TextInputType.name,
+                          keyboardType: TextInputType.phone,
+                          style: TextStyle(
+                            fontSize: ResponsiveFlutter.of(context).fontSize(1)
+                          ),
                           autofocus: true,
                           decoration: InputDecoration(
                             border: new OutlineInputBorder(
