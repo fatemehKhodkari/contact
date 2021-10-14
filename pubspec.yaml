@@ -65,6 +65,9 @@ flutter:
   assets:
     - assets/pic/2962618.png
     - assets/pic/2962647.png
+    - assets/pic/add.png
+    - assets/pic/addphoto.png
+    - assets/pic/remove.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

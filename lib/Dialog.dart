@@ -15,7 +15,7 @@ class AddDialog{
                 insetPadding: const EdgeInsets.all(0.0),
                 actionsOverflowButtonSpacing: 0.0,
                 content: Container(
-                  height: ResponsiveFlutter.of(context).hp(60),
+                  height: ResponsiveFlutter.of(context).hp(31),
                   width: ResponsiveFlutter.of(context).wp(70),
                   child: Column(
                     children: <Widget>[
