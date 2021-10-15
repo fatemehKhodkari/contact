@@ -133,6 +133,7 @@ class _MainHomeState extends State<MainHome> {
                                     top: ResponsiveFlutter.of(context).hp(2),
                                     bottom: ResponsiveFlutter.of(context).hp(2),
                                   ),
+                                  hintText: _farsi.replaceFarsiNumber(''),
                                   labelText: 'تلفن',
                                   // border: InputBorder.none,
                                   prefixIcon: Icon(Icons.phone_outlined,color: Colors.grey,
@@ -300,9 +301,10 @@ class _MainHomeState extends State<MainHome> {
                         SizedBox(width: ResponsiveFlutter.of(context).wp(2),),
                         Column(
                           children: <Widget>[
-                            SingleChildScrollView(
-                              scrollDirection: Axis.vertical,
-                              child: Container(
+                            // SingleChildScrollView(
+                            //   scrollDirection: Axis.vertical,
+                            //   child:
+                              Container(
                                 width: ResponsiveFlutter.of(context).wp(40),
                                 child: Text(_journals[index]['name'],style: TextStyle(
                                   fontSize: ResponsiveFlutter.of(context).fontSize(2.5),
@@ -310,7 +312,7 @@ class _MainHomeState extends State<MainHome> {
                                 ),
                                   textAlign: TextAlign.right,),
                               ),
-                            ),
+                            // ),
                             SizedBox(height: ResponsiveFlutter.of(context).hp(1),),
                             Container(
                               width: ResponsiveFlutter.of(context).wp(40),
