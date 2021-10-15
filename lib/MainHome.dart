@@ -301,18 +301,14 @@ class _MainHomeState extends State<MainHome> {
                         SizedBox(width: ResponsiveFlutter.of(context).wp(2),),
                         Column(
                           children: <Widget>[
-                            // SingleChildScrollView(
-                            //   scrollDirection: Axis.vertical,
-                            //   child:
                               Container(
                                 width: ResponsiveFlutter.of(context).wp(40),
-                                child: Text(_journals[index]['name'],style: TextStyle(
+                                child: Text(_farsi.replaceFarsiNumber(_journals[index]['name']),style: TextStyle(
                                   fontSize: ResponsiveFlutter.of(context).fontSize(2.5),
                                   fontWeight: FontWeight.bold,
                                 ),
                                   textAlign: TextAlign.right,),
                               ),
-                            // ),
                             SizedBox(height: ResponsiveFlutter.of(context).hp(1),),
                             Container(
                               width: ResponsiveFlutter.of(context).wp(40),
