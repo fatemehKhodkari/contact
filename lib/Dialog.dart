@@ -4,7 +4,7 @@ import 'package:responsive_flutter/responsive_flutter.dart';
 import 'package:sqflite/sqflite.dart';
 import 'DataBase.dart';
 class AddDialog{
-  TextEditingController nameController = new TextEditingController();  createAlertDialog(BuildContext context){
+  TextEditingController _nameController = new TextEditingController();  createAlertDialog(BuildContext context){
     return showDialog(
         context: context,
         builder: (BuildContext context){
@@ -39,7 +39,7 @@ class AddDialog{
                           right: ResponsiveFlutter.of(context).wp(5),
                         ),
                         child: TextFormField(
-                          controller: nameController,
+                          controller: _nameController,
                           keyboardType: TextInputType.name,
                           style: TextStyle(
                               fontSize: ResponsiveFlutter.of(context).fontSize(2.25)
@@ -112,9 +112,7 @@ class AddDialog{
                                 Navigator.of(context).push(MaterialPageRoute(
                                     builder: (context) => MainHome()));
                                 print("hello");
-                                print(nameController.text);
-                                Database database;
-                                database.
+                                print(_nameController.text);
 
                               },
                             ),

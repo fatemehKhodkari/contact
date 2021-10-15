@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
-class database{
+class Databases{
 
 
   void main() async {
@@ -20,7 +20,7 @@ class database{
       version: 1,
     );
 
-    Future<void> insertDog(Contact contact) async {
+    Future<void> insertContact(Contact contact) async {
 
       final Database db = await database;
 
@@ -49,7 +49,7 @@ class database{
       });
     }
 
-    Future<void> updateDog(Contact contact) async {
+    Future<void> updateContact(Contact contact) async {
 
       final db = await database;
 
@@ -64,7 +64,7 @@ class database{
       );
     }
 
-    Future<void> deleteDog(int id) async {
+    Future<void> deleteContact(int id) async {
 
       final db = await database;
 
@@ -85,7 +85,7 @@ class database{
     );
 
 
-    await insertDog(fido);
+    await insertContact(fido);
 
 
     print(await contacts());
@@ -96,13 +96,13 @@ class database{
       name: fido.name,
       age: fido.age + 7,
     );
-    await updateDog(fido);
+    await updateContact(fido);
 
 
     print(await contacts());
 
 
-    await deleteDog(fido.id);
+    await deleteContact(fido.id);
 
 
     print(await contacts());
