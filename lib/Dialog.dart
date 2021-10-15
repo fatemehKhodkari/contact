@@ -2,7 +2,6 @@ import 'package:contact/MainHome.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_flutter/responsive_flutter.dart';
 import 'package:sqflite/sqflite.dart';
-import 'DataBase.dart';
 class AddDialog{
   TextEditingController _nameController = new TextEditingController();  createAlertDialog(BuildContext context){
     return showDialog(
