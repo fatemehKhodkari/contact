@@ -1,10 +1,10 @@
 import 'package:contact/MainHome.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_flutter/responsive_flutter.dart';
-
-
+import 'package:sqflite/sqflite.dart';
+import 'DataBase.dart';
 class AddDialog{
-  createAlertDialog(BuildContext context){
+  TextEditingController nameController = new TextEditingController();  createAlertDialog(BuildContext context){
     return showDialog(
         context: context,
         builder: (BuildContext context){
@@ -39,6 +39,7 @@ class AddDialog{
                           right: ResponsiveFlutter.of(context).wp(5),
                         ),
                         child: TextFormField(
+                          controller: nameController,
                           keyboardType: TextInputType.name,
                           style: TextStyle(
                               fontSize: ResponsiveFlutter.of(context).fontSize(2.25)
@@ -93,7 +94,6 @@ class AddDialog{
                           ),
                         ),
                       ),
-
                       Padding(
                         padding: EdgeInsets.only(
                           top: ResponsiveFlutter.of(context).hp(5),
@@ -111,6 +111,11 @@ class AddDialog{
                               onPressed: (){
                                 Navigator.of(context).push(MaterialPageRoute(
                                     builder: (context) => MainHome()));
+                                print("hello");
+                                print(nameController.text);
+                                Database database;
+                                database.
+
                               },
                             ),
                             SizedBox(width: ResponsiveFlutter.of(context).wp(5),),
@@ -133,6 +138,7 @@ class AddDialog{
               );
           }
     );
+
   }
    );
   }
