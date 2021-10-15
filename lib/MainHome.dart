@@ -60,138 +60,141 @@ class _MainHomeState extends State<MainHome> {
                     content: Container(
                       height: ResponsiveFlutter.of(context).hp(65),
                       width: ResponsiveFlutter.of(context).wp(70),
-                      child: Column(
-                        children: <Widget>[
-                          Padding(
-                            padding: EdgeInsets.only(
-                              top: ResponsiveFlutter.of(context).hp(5),
-                              left: ResponsiveFlutter.of(context).wp(5),
-                              right: ResponsiveFlutter.of(context).wp(5),
-                            ),
-                            child: CircleAvatar(
-                              backgroundColor: Colors.white,
-                              radius: ResponsiveFlutter.of(context).wp(15),
-                              backgroundImage: AssetImage('assets/pic/addphoto.png'),
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.only(
-                              top: ResponsiveFlutter.of(context).hp(5),
-                              left: ResponsiveFlutter.of(context).wp(5),
-                              right: ResponsiveFlutter.of(context).wp(5),
-                            ),
-                            child: TextFormField(
-                              controller: _nameController,
-                              keyboardType: TextInputType.name,
-                              style: TextStyle(
-                                  fontSize: ResponsiveFlutter.of(context).fontSize(2.25)
+                      child: SingleChildScrollView(
+                        scrollDirection: Axis.vertical,
+                        child: Column(
+                          children: <Widget>[
+                            Padding(
+                              padding: EdgeInsets.only(
+                                top: ResponsiveFlutter.of(context).hp(5),
+                                left: ResponsiveFlutter.of(context).wp(5),
+                                right: ResponsiveFlutter.of(context).wp(5),
                               ),
-                              autofocus: true,
-                              decoration: InputDecoration(
-                                border: new OutlineInputBorder(
-                                  borderSide: new BorderSide(width: 1.0),
-                                  borderRadius: BorderRadius.circular(8.0),
-                                ),
-                                contentPadding: EdgeInsets.only(
-                                  top: ResponsiveFlutter.of(context).hp(2),
-                                  bottom: ResponsiveFlutter.of(context).hp(2),
-                                ),
-                                labelText: 'نام و نام خانوادگی',
-                                // border: InputBorder.none,
-                                prefixIcon: Icon(Icons.person_outline,color: Colors.grey,
-                                  // size: 24.0
-                                  size: MediaQuery.of(context).size.width/15,
-                                ),
+                              child: CircleAvatar(
+                                backgroundColor: Colors.white,
+                                radius: ResponsiveFlutter.of(context).wp(15),
+                                backgroundImage: AssetImage('assets/pic/addphoto.png'),
                               ),
                             ),
-                          ),
-
-                          Padding(
-                            padding: EdgeInsets.only(
-                              top: ResponsiveFlutter.of(context).hp(5),
-                              left: ResponsiveFlutter.of(context).wp(5),
-                              right: ResponsiveFlutter.of(context).wp(5),
-                            ),
-                            child: TextFormField(
-                              controller: _numberController,
-                              keyboardType: TextInputType.phone,
-                              style: TextStyle(
-                                  fontSize: ResponsiveFlutter.of(context).fontSize(2.25)
+                            Padding(
+                              padding: EdgeInsets.only(
+                                top: ResponsiveFlutter.of(context).hp(5),
+                                left: ResponsiveFlutter.of(context).wp(5),
+                                right: ResponsiveFlutter.of(context).wp(5),
                               ),
-                              autofocus: true,
-                              decoration: InputDecoration(
-                                border: new OutlineInputBorder(
-                                  borderSide: new BorderSide(width: 1.0),
-                                  borderRadius: BorderRadius.circular(8.0),
+                              child: TextFormField(
+                                controller: _nameController,
+                                keyboardType: TextInputType.name,
+                                style: TextStyle(
+                                    fontSize: ResponsiveFlutter.of(context).fontSize(2.25)
                                 ),
-                                contentPadding: EdgeInsets.only(
-                                  top: ResponsiveFlutter.of(context).hp(2),
-                                  bottom: ResponsiveFlutter.of(context).hp(2),
-                                ),
-                                labelText: 'تلفن',
-                                // border: InputBorder.none,
-                                prefixIcon: Icon(Icons.phone_outlined,color: Colors.grey,
-                                  // size: 24.0
-                                  size: MediaQuery.of(context).size.width/15,
-                                ),
-                              ),
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.only(
-                              top: ResponsiveFlutter.of(context).hp(5),
-                              left: ResponsiveFlutter.of(context).wp(20),
-                              right: ResponsiveFlutter.of(context).wp(20),
-                            ),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: <Widget>[
-                                FloatingActionButton(
-                                  backgroundColor: Colors.white,
-                                  child: Image(
-                                    image: AssetImage('assets/pic/add.png'),
+                                autofocus: true,
+                                decoration: InputDecoration(
+                                  border: new OutlineInputBorder(
+                                    borderSide: new BorderSide(width: 1.0),
+                                    borderRadius: BorderRadius.circular(8.0),
                                   ),
-                                  onPressed: () async {
-                                    // Save new journal
-                                    if (id == null) {
-                                      await _addItem();
-                                    }
-
-                                    if (id != null) {
-                                      await _updateItem(id);
-                                    }
-
-                                    // Clear the text fields
-                                    _nameController.text = '';
-                                    _numberController.text = '';
-
-                                    // Close the bottom sheet
-                                    Navigator.of(context).pop();
-                                    // Navigator.of(context).push(MaterialPageRoute(
-                                    //     builder: (context) => MainHome()));
-                                    print(_nameController.text);
-
-                                  },
-                                ),
-                                SizedBox(width: ResponsiveFlutter.of(context).wp(5),),
-                                FloatingActionButton(
-                                  backgroundColor: Colors.white,
-                                  child: Image(
-                                    image: AssetImage('assets/pic/remove.png'),
+                                  contentPadding: EdgeInsets.only(
+                                    top: ResponsiveFlutter.of(context).hp(2),
+                                    bottom: ResponsiveFlutter.of(context).hp(2),
                                   ),
-                                  onPressed: (){
-
-                                    // Clear the text fields
-                                    _nameController.text = '';
-                                    _numberController.text = '';
-                                    Navigator.of(context).pop();
-                                  },
+                                  labelText: 'نام و نام خانوادگی',
+                                  // border: InputBorder.none,
+                                  prefixIcon: Icon(Icons.person_outline,color: Colors.grey,
+                                    // size: 24.0
+                                    size: MediaQuery.of(context).size.width/15,
+                                  ),
                                 ),
-                              ],
+                              ),
                             ),
-                          )
 
-                        ],
+                            Padding(
+                              padding: EdgeInsets.only(
+                                top: ResponsiveFlutter.of(context).hp(5),
+                                left: ResponsiveFlutter.of(context).wp(5),
+                                right: ResponsiveFlutter.of(context).wp(5),
+                              ),
+                              child: TextFormField(
+                                controller: _numberController,
+                                keyboardType: TextInputType.phone,
+                                style: TextStyle(
+                                    fontSize: ResponsiveFlutter.of(context).fontSize(2.25)
+                                ),
+                                autofocus: true,
+                                decoration: InputDecoration(
+                                  border: new OutlineInputBorder(
+                                    borderSide: new BorderSide(width: 1.0),
+                                    borderRadius: BorderRadius.circular(8.0),
+                                  ),
+                                  contentPadding: EdgeInsets.only(
+                                    top: ResponsiveFlutter.of(context).hp(2),
+                                    bottom: ResponsiveFlutter.of(context).hp(2),
+                                  ),
+                                  labelText: 'تلفن',
+                                  // border: InputBorder.none,
+                                  prefixIcon: Icon(Icons.phone_outlined,color: Colors.grey,
+                                    // size: 24.0
+                                    size: MediaQuery.of(context).size.width/15,
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Padding(
+                              padding: EdgeInsets.only(
+                                top: ResponsiveFlutter.of(context).hp(5),
+                                left: ResponsiveFlutter.of(context).wp(20),
+                                right: ResponsiveFlutter.of(context).wp(20),
+                              ),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: <Widget>[
+                                  FloatingActionButton(
+                                    backgroundColor: Colors.white,
+                                    child: Image(
+                                      image: AssetImage('assets/pic/add.png'),
+                                    ),
+                                    onPressed: () async {
+                                      // Save new journal
+                                      if (id == null) {
+                                        await _addItem();
+                                      }
+
+                                      if (id != null) {
+                                        await _updateItem(id);
+                                      }
+
+                                      // Clear the text fields
+                                      _nameController.text = '';
+                                      _numberController.text = '';
+
+                                      // Close the bottom sheet
+                                      Navigator.of(context).pop();
+                                      // Navigator.of(context).push(MaterialPageRoute(
+                                      //     builder: (context) => MainHome()));
+                                      print(_nameController.text);
+
+                                    },
+                                  ),
+                                  SizedBox(width: ResponsiveFlutter.of(context).wp(5),),
+                                  FloatingActionButton(
+                                    backgroundColor: Colors.white,
+                                    child: Image(
+                                      image: AssetImage('assets/pic/remove.png'),
+                                    ),
+                                    onPressed: (){
+
+                                      // Clear the text fields
+                                      _nameController.text = '';
+                                      _numberController.text = '';
+                                      Navigator.of(context).pop();
+                                    },
+                                  ),
+                                ],
+                              ),
+                            )
+
+                          ],
+                        ),
                       ),
                     )
                 );
@@ -275,12 +278,11 @@ class _MainHomeState extends State<MainHome> {
       // children: <Widget>[
         Container(
           // width: ResponsiveFlutter.of(context).wp(90),
-          height: ResponsiveFlutter.of(context).hp(12.5),
+          // height: ResponsiveFlutter.of(context).hp(12.5),
           child: Column(
             children: <Widget>[
               SizedBox(height: ResponsiveFlutter.of(context).hp(0.5),),
               SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
@@ -295,16 +297,22 @@ class _MainHomeState extends State<MainHome> {
                         SizedBox(width: ResponsiveFlutter.of(context).wp(2),),
                         Column(
                           children: <Widget>[
-                            Text(_journals[index]['name'],style: TextStyle(
-                              fontSize: ResponsiveFlutter.of(context).fontSize(2.5),
-                              fontWeight: FontWeight.bold,
+                            SingleChildScrollView(
+                              scrollDirection: Axis.vertical,
+                              child: Container(
+                                width: ResponsiveFlutter.of(context).wp(40),
+                                child: Text(_journals[index]['name'],style: TextStyle(
+                                  fontSize: ResponsiveFlutter.of(context).fontSize(2.5),
+                                  fontWeight: FontWeight.bold,
+                                ),
+                                  textAlign: TextAlign.right,),
+                              ),
                             ),
-                              textAlign: TextAlign.center,),
                             SizedBox(height: ResponsiveFlutter.of(context).hp(1),),
                             Text(_journals[index]['number'],style: TextStyle(
                               fontSize: ResponsiveFlutter.of(context).fontSize(1.5),
                             ),
-                              textAlign: TextAlign.center,),
+                              textAlign: TextAlign.right,),
                           ],
                         ),
                       ],
