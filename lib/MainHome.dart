@@ -1,6 +1,8 @@
 import 'package:contact/sql_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_flutter/responsive_flutter.dart';
+
+import 'farsiNumber.dart';
 // import 'Dialog.dart';
 
 
@@ -13,6 +15,7 @@ class MainHome extends StatefulWidget {
 
 class _MainHomeState extends State<MainHome> {
   // AddDialog _dialog= new AddDialog();
+  Farsi _farsi=new Farsi();
 
   List<Map<String, dynamic>> _journals = [];
 
@@ -309,10 +312,13 @@ class _MainHomeState extends State<MainHome> {
                               ),
                             ),
                             SizedBox(height: ResponsiveFlutter.of(context).hp(1),),
-                            Text(_journals[index]['number'],style: TextStyle(
-                              fontSize: ResponsiveFlutter.of(context).fontSize(1.5),
+                            Container(
+                              width: ResponsiveFlutter.of(context).wp(40),
+                              child: Text(_farsi.replaceFarsiNumber(_journals[index]['number']),style: TextStyle(
+                                fontSize: ResponsiveFlutter.of(context).fontSize(1.5),
+                              ),
+                                textAlign: TextAlign.right,),
                             ),
-                              textAlign: TextAlign.right,),
                           ],
                         ),
                       ],
