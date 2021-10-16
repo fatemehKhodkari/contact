@@ -277,12 +277,12 @@ class _MainHomeState extends State<MainHome> {
 
   Container contactItem(context,index){
     List<ChoiceOfTransport> choices = <ChoiceOfTransport> [
+      new ChoiceOfTransport(title: 'حذف',inkWell: InkWell(
+        onTap: () => _deleteItem(_journals[index]['id']),
+      )),
       new ChoiceOfTransport(title: 'ویرایش',inkWell: InkWell(
         onTap: () => _showForm(_journals[index]['id']),
       )),
-      new ChoiceOfTransport(title: 'حذف',inkWell: InkWell(
-        onTap: () => _deleteItem(_journals[index]['id']),
-      ))
     ];
     ChoiceOfTransport _selectChoice = choices[0];
     void _select(ChoiceOfTransport choice){
@@ -350,7 +350,21 @@ class _MainHomeState extends State<MainHome> {
 
                     Column(
                       children: <Widget>[
-                        PopupMenuButton(
+                        PopupMenuButton<ChoiceOfTransport>(
+                          elevation: 3.2,
+                          initialValue: choices[1],
+                          onCanceled: () => print("you didn't choose anything"),
+                          tooltip: "ابزار",
+                          onSelected: _select,
+                          itemBuilder: (BuildContext context){
+                            return choices.map((ChoiceOfTransport choice) {
+                              return new PopupMenuItem<ChoiceOfTransport>(
+                                value: choice,
+                                child: new Text(choice.title),
+                                onTap: choice.inkWell.onTap,
+                              );
+                            }).toList();
+                          },
 
                         )
                       ],
