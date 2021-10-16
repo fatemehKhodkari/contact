@@ -233,7 +233,6 @@ class _MainHomeState extends State<MainHome> {
   }
 
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -285,6 +284,12 @@ class _MainHomeState extends State<MainHome> {
         onTap: () => _deleteItem(_journals[index]['id']),
       ))
     ];
+    ChoiceOfTransport _selectChoice = choices[0];
+    void _select(ChoiceOfTransport choice){
+      setState(() {
+        _selectChoice = choice;
+      });
+    }
     return
       // children: <Widget>[
         Container(
@@ -342,6 +347,14 @@ class _MainHomeState extends State<MainHome> {
                     //     ),
                     //   ],
                     // ),
+
+                    Column(
+                      children: <Widget>[
+                        PopupMenuButton(
+
+                        )
+                      ],
+                    )
                   ],
                 ),
               ),
