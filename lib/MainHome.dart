@@ -1,9 +1,12 @@
 import 'package:contact/sql_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_flutter/responsive_flutter.dart';
-
 import 'farsiNumber.dart';
 // import 'Dialog.dart';
+import 'choices.dart';
+
+
+
 
 
 class MainHome extends StatefulWidget {
@@ -321,19 +324,19 @@ class _MainHomeState extends State<MainHome> {
                         ),
                       ],
                     ),
-                    Row(
-                      children: [
-                        IconButton(
-                          icon: Icon(Icons.edit),
-                          onPressed: () => _showForm(_journals[index]['id']),
-                        ),
-                        IconButton(
-                          icon: Icon(Icons.delete),
-                          onPressed: () =>
-                              _deleteItem(_journals[index]['id']),
-                        ),
-                      ],
-                    ),
+                    // Row(
+                    //   children: [
+                    //     IconButton(
+                    //       icon: Icon(Icons.edit),
+                    //       onPressed: () => _showForm(_journals[index]['id']),
+                    //     ),
+                    //     IconButton(
+                    //       icon: Icon(Icons.delete),
+                    //       onPressed: () =>
+                    //           _deleteItem(_journals[index]['id']),
+                    //     ),
+                    //   ],
+                    // ),
                   ],
                 ),
               ),
