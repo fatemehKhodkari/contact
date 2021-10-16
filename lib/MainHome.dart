@@ -278,10 +278,10 @@ class _MainHomeState extends State<MainHome> {
 
   Container contactItem(context,index){
     List<ChoiceOfTransport> choices = <ChoiceOfTransport> [
-      new ChoiceOfTransport(inkWell: InkWell(
+      new ChoiceOfTransport(title: 'ویرایش',inkWell: InkWell(
         onTap: () => _showForm(_journals[index]['id']),
       )),
-      new ChoiceOfTransport(inkWell: InkWell(
+      new ChoiceOfTransport(title: 'حذف',inkWell: InkWell(
         onTap: () => _deleteItem(_journals[index]['id']),
       ))
     ];
