@@ -5,10 +5,6 @@ import 'farsiNumber.dart';
 // import 'Dialog.dart';
 import 'choices.dart';
 
-
-
-
-
 class MainHome extends StatefulWidget {
   const MainHome({Key key}) : super(key: key);
 
@@ -281,6 +277,14 @@ class _MainHomeState extends State<MainHome> {
   }
 
   Container contactItem(context,index){
+    List<ChoiceOfTransport> choices = <ChoiceOfTransport> [
+      new ChoiceOfTransport(inkWell: InkWell(
+        onTap: () => _showForm(_journals[index]['id']),
+      )),
+      new ChoiceOfTransport(inkWell: InkWell(
+        onTap: () => _deleteItem(_journals[index]['id']),
+      ))
+    ];
     return
       // children: <Widget>[
         Container(
@@ -324,6 +328,7 @@ class _MainHomeState extends State<MainHome> {
                         ),
                       ],
                     ),
+
                     // Row(
                     //   children: [
                     //     IconButton(
