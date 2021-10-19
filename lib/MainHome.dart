@@ -1,5 +1,6 @@
 import 'dart:ui';
 import 'package:flutter/painting.dart';
+import 'package:flutter/services.dart';
 import 'package:focused_menu/modals.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:contact/sql_helper.dart';
@@ -17,13 +18,11 @@ class MainHome extends StatefulWidget {
 }
 
 class _MainHomeState extends State<MainHome> {
-  // AddDialog _dialog= new AddDialog();
   Farsi _farsi=new Farsi();
 
   List<Map<String, dynamic>> _journals = [];
 
   bool _isLoading = true;
-  // This function is used to fetch all data from the database
   void _refreshJournals() async {
     final data = await SQLHelper.getItems();
     setState(() {
@@ -35,18 +34,14 @@ class _MainHomeState extends State<MainHome> {
   @override
   void initState() {
     super.initState();
-    _refreshJournals(); // Loading the diary when the app starts
+    _refreshJournals();
   }
 
   TextEditingController _nameController = new TextEditingController();
   TextEditingController _numberController = new TextEditingController();
 
-  // This function will be triggered when the floating button is pressed
-  // It will also be triggered when you want to update an item
   void _showForm(int id) async {
     if (id != null) {
-      // id == null -> create new item
-      // id != null -> update an existing item
       final existingJournal =
       _journals.firstWhere((element) => element['id'] == id);
       _nameController.text = existingJournal['name'];
@@ -103,13 +98,16 @@ class _MainHomeState extends State<MainHome> {
                                 autofocus: true,
                                 decoration: InputDecoration(
                                   border: new OutlineInputBorder(
-                                    borderSide: new BorderSide(width: 1.0),
+                                    borderSide: new BorderSide(width: 1.0,
+                                     style: BorderStyle.solid,
+                                    ),
                                     borderRadius: BorderRadius.circular(8.0),
                                   ),
                                   contentPadding: EdgeInsets.only(
                                     top: ResponsiveFlutter.of(context).hp(2),
                                     bottom: ResponsiveFlutter.of(context).hp(2),
                                   ),
+                                  // HexColor('bffdff')
                                   labelText: 'نام و نام خانوادگی',
                                   // border: InputBorder.none,
                                   prefixIcon: Icon(Icons.person_outline,color: Colors.grey,
@@ -221,21 +219,18 @@ class _MainHomeState extends State<MainHome> {
 
   }
 
-  // Insert a new journal to the database
   Future<void> _addItem() async {
     await SQLHelper.createItem(
         _nameController.text, _numberController.text);
     _refreshJournals();
   }
 
-  // Update an existing journal
   Future<void> _updateItem(int id) async {
     await SQLHelper.updateItem(
         id, _nameController.text, _numberController.text);
     _refreshJournals();
   }
 
-  // Delete an item
   void _deleteItem(int id) async {
     await SQLHelper.deleteItem(id);
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
@@ -253,11 +248,28 @@ class _MainHomeState extends State<MainHome> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // backgroundColor: HexColor('FFFBED'),
       appBar: AppBar(
+        shape: RoundedRectangleBorder(
+          side: BorderSide(
+            width: 0.2,
+            color: Colors.blueGrey
+          ),
+            borderRadius: BorderRadius.only(
+              bottomLeft: Radius.circular(40),
+              bottomRight: Radius.circular(40),
+            ),
+        ),
+        systemOverlayStyle: SystemUiOverlayStyle(
+          statusBarColor: Colors.black87,
+        ),
+        toolbarOpacity: 0.5,
         toolbarHeight: ResponsiveFlutter.of(context).hp(7),
-        backgroundColor: Colors.white,
+        // backgroundColor: HexColor('bffdff'),
+        // backgroundColor: HexColor('FFFBED'),
+        backgroundColor: Colors.black,
         title: Text("مخاطبین",style: TextStyle(
-          color: Colors.black,
+          color: Colors.white,
           fontSize: ResponsiveFlutter.of(context).fontSize(3),
         ),
         textAlign: TextAlign.right,),
@@ -265,7 +277,7 @@ class _MainHomeState extends State<MainHome> {
       ),
       body: _isLoading
           ? Center(
-        child: CircularProgressIndicator(color: Colors.orange,),
+        child: CircularProgressIndicator(color: HexColor('bffdff'),),
       )
           : ListView.builder(
         itemCount: _journals.length,
@@ -293,10 +305,6 @@ class _MainHomeState extends State<MainHome> {
       )
     );
   }
-  List<Color> coolooer=<Color>[
-    Colors.lightBlueAccent,
-    Colors.orange
-  ];
    dialogshow (BuildContext context,int index){
     return showDialog(
         context: context,
@@ -332,7 +340,7 @@ class _MainHomeState extends State<MainHome> {
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
                             IconButton(
-                              splashColor: Colors.orange,
+                              splashColor: HexColor('bffdff'),
                               iconSize: ResponsiveFlutter.of(context).wp(5),
                               splashRadius: ResponsiveFlutter.of(context).wp(5),
                               icon: Icon(Icons.cancel_outlined),
@@ -341,7 +349,7 @@ class _MainHomeState extends State<MainHome> {
                               },
                             ),
                             IconButton(
-                              splashColor: Colors.orange,
+                              splashColor: HexColor('bffdff'),
                               iconSize: ResponsiveFlutter.of(context).wp(5),
                               splashRadius: ResponsiveFlutter.of(context).wp(5),
                               icon: Icon(Icons.delete_outline_outlined,color: Colors.red,),
@@ -377,7 +385,7 @@ class _MainHomeState extends State<MainHome> {
                       Row(
                         children: [
                           CircleAvatar(
-                            backgroundColor: Colors.white,
+                            backgroundColor: Colors.white.withOpacity(0.0),
                             radius: ResponsiveFlutter.of(context).wp(10),
                             backgroundImage: new AssetImage('assets/pic/2962647.png'),
                           ),
@@ -444,6 +452,7 @@ class _MainHomeState extends State<MainHome> {
           onPressed: () {},
           menuItems: [
             FocusedMenuItem(
+              backgroundColor: HexColor('FFFBED'),
                 title: Text('ویرایش',
                   style: TextStyle(
                     fontSize: ResponsiveFlutter.of(context).fontSize(2),
