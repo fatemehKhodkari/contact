@@ -354,7 +354,7 @@ class _MainHomeState extends State<MainHome> {
                               },
                             ),
                             IconButton(
-                              splashColor: HexColor('bffdff'),
+                              splashColor: Colors.orange,
                               iconSize: ResponsiveFlutter.of(context).wp(12),
                               splashRadius: ResponsiveFlutter.of(context).wp(12),
                               icon: Icon(Icons.delete_outline_outlined,color: Colors.orange,),
@@ -399,7 +399,7 @@ class _MainHomeState extends State<MainHome> {
                           Column(
                             children: <Widget>[
                               Container(
-                                width: ResponsiveFlutter.of(context).wp(40),
+                                width: ResponsiveFlutter.of(context).wp(72),
                                 child: Text(_farsi.replaceFarsiNumber(_journals[index]['name']),style: TextStyle(
                                   fontSize: ResponsiveFlutter.of(context).fontSize(2.5),
                                   fontWeight: FontWeight.bold,
@@ -408,7 +408,7 @@ class _MainHomeState extends State<MainHome> {
                               ),
                               SizedBox(height: ResponsiveFlutter.of(context).hp(1),),
                               Container(
-                                width: ResponsiveFlutter.of(context).wp(40),
+                                width: ResponsiveFlutter.of(context).wp(72),
                                 child: Text(_farsi.replaceFarsiNumber(_journals[index]['number']),style: TextStyle(
                                   fontSize: ResponsiveFlutter.of(context).fontSize(1.5),
                                 ),
