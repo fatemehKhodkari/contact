@@ -1,9 +1,14 @@
+import 'dart:ui';
+import 'package:focused_menu/modals.dart';
+import 'package:hexcolor/hexcolor.dart';
 import 'package:contact/sql_helper.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_flutter/responsive_flutter.dart';
 import 'farsiNumber.dart';
 // import 'Dialog.dart';
 import 'choices.dart';
+import 'package:focused_menu/focused_menu.dart';
 
 class MainHome extends StatefulWidget {
   const MainHome({Key key}) : super(key: key);
@@ -59,6 +64,12 @@ class _MainHomeState extends State<MainHome> {
                     contentPadding: const EdgeInsets.all(0.0),
                     insetPadding: const EdgeInsets.all(0.0),
                     actionsOverflowButtonSpacing: 0.0,
+                    backgroundColor: HexColor('FFFBED').withOpacity(0.7),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(
+                          Radius.circular(60)
+                      ),
+                    ),
                     content: Container(
                       height: ResponsiveFlutter.of(context).hp(65),
                       width: ResponsiveFlutter.of(context).wp(70),
@@ -73,7 +84,7 @@ class _MainHomeState extends State<MainHome> {
                                 right: ResponsiveFlutter.of(context).wp(5),
                               ),
                               child: CircleAvatar(
-                                backgroundColor: Colors.white,
+                                backgroundColor: Colors.white.withOpacity(0.0),
                                 radius: ResponsiveFlutter.of(context).wp(15),
                                 backgroundImage: AssetImage('assets/pic/addphoto.png'),
                               ),
@@ -152,10 +163,11 @@ class _MainHomeState extends State<MainHome> {
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: <Widget>[
                                   FloatingActionButton(
-                                    backgroundColor: Colors.white,
+                                    backgroundColor: Colors.white.withOpacity(0.0),
                                     child: Image(
                                       image: AssetImage('assets/pic/add.png'),
                                     ),
+                                    elevation: 20,
                                     onPressed: () async {
                                       // Save new journal
                                       if (id == null) {
@@ -180,10 +192,11 @@ class _MainHomeState extends State<MainHome> {
                                   ),
                                   SizedBox(width: ResponsiveFlutter.of(context).wp(5),),
                                   FloatingActionButton(
-                                    backgroundColor: Colors.white,
+                                    backgroundColor: Colors.white.withOpacity(0.0),
                                     child: Image(
                                       image: AssetImage('assets/pic/remove.png'),
                                     ),
+                                    elevation: 20.0,
                                     onPressed: (){
 
                                       // Clear the text fields
@@ -227,7 +240,12 @@ class _MainHomeState extends State<MainHome> {
   void _deleteItem(int id) async {
     await SQLHelper.deleteItem(id);
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-      content: Text('مخاطب با موفقیت حذف شد!'),
+      backgroundColor: HexColor('FFFBED').withOpacity(0.5),
+      content: Text('مخاطب با موفقیت حذف شد!',
+        style: TextStyle(
+          color: Colors.black87
+        ),
+      ),
     ));
     _refreshJournals();
   }
@@ -263,7 +281,9 @@ class _MainHomeState extends State<MainHome> {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.white.withOpacity(0.0),
+        elevation: 20,
+        splashColor: HexColor('FFFBED'),
         child: Image(
           image: AssetImage('assets/pic/2962618.png'),
         ),
@@ -274,45 +294,116 @@ class _MainHomeState extends State<MainHome> {
       )
     );
   }
-
-  Container contactItem(context,index){
-    List<ChoiceOfTransport> choices = <ChoiceOfTransport> [
-      new ChoiceOfTransport(title: 'حذف',inkWell: InkWell(
-        onTap: () => _deleteItem(_journals[index]['id']),
-      )),
-      new ChoiceOfTransport(title: 'ویرایش',inkWell: InkWell(
-        onTap: () => _showForm(_journals[index]['id']),
-      )),
-    ];
-    ChoiceOfTransport _selectChoice = choices[0];
-    void _select(ChoiceOfTransport choice){
-      setState(() {
-        _selectChoice = choice;
-      });
-    }
-    return
-      // children: <Widget>[
-        Container(
-          // width: ResponsiveFlutter.of(context).wp(90),
-          // height: ResponsiveFlutter.of(context).hp(12.5),
-          child: Column(
-            children: <Widget>[
-              SizedBox(height: ResponsiveFlutter.of(context).hp(0.5),),
-              SingleChildScrollView(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    Row(
+  List<Color> coolooer=<Color>[
+    Colors.lightBlueAccent,
+    Colors.orange
+  ];
+   dialogshow (BuildContext context,int index){
+    return showDialog(
+        context: context,
+        builder: (BuildContext context){
+          return StatefulBuilder(
+              builder: (BuildContext context,StateSetter setState){
+                return AlertDialog(
+                  titlePadding: const EdgeInsets.all(0.0),
+                  contentPadding: const EdgeInsets.all(0.0),
+                  insetPadding: const EdgeInsets.all(0.0),
+                  actionsOverflowButtonSpacing: 0.0,
+                  backgroundColor: HexColor('FFFBED').withOpacity(0.7),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.all(
+                        Radius.circular(60)
+                    ),
+                  ),
+                  content: Container(
+                    height: ResponsiveFlutter.of(context).hp(12),
+                    child: Column(
                       children: [
-                        CircleAvatar(
-                          backgroundColor: Colors.white,
-                          radius: ResponsiveFlutter.of(context).wp(10),
-                          backgroundImage: new AssetImage('assets/pic/2962647.png'),
+                        SizedBox(height: ResponsiveFlutter.of(context).hp(1),),
+                        Text(
+                          'آیا میخواهید این مخاطب را حذف کنید؟',
+                          style: TextStyle(
+                            fontSize: ResponsiveFlutter.of(context).fontSize(1.75),
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black,
+                          ),
+                          textAlign: TextAlign.right,
                         ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            IconButton(
+                              splashColor: Colors.orange,
+                              iconSize: ResponsiveFlutter.of(context).wp(5),
+                              splashRadius: ResponsiveFlutter.of(context).wp(5),
+                              icon: Icon(Icons.cancel_outlined),
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                              },
+                            ),
+                            IconButton(
+                              splashColor: Colors.orange,
+                              iconSize: ResponsiveFlutter.of(context).wp(5),
+                              splashRadius: ResponsiveFlutter.of(context).wp(5),
+                              icon: Icon(Icons.delete_outline_outlined,color: Colors.red,),
+                              onPressed: () {
+                                _deleteItem(_journals[index]['id']);
+                                Navigator.of(context).pop();
+                              },
+                            ),
+                          ],
+                        )
+                      ],
+                    )
+                  ),
+                );
+              }
+          );
+        }
+    );}
 
-                        SizedBox(width: ResponsiveFlutter.of(context).wp(2),),
-                        Column(
-                          children: <Widget>[
+
+  Widget contactItem(context,index){
+
+      List<ChoiceOfTransport> choices = <ChoiceOfTransport> [
+        new ChoiceOfTransport(title: 'حذف',item: () {
+          dialogshow(context, index);
+        }
+        ),
+        new ChoiceOfTransport(title: 'ویرایش',item: () {
+            dialogshow(context,index);
+        }
+        ),
+      ];
+      ChoiceOfTransport _selectChoice = choices[0];
+      void _select(ChoiceOfTransport choice) async {
+        setState(() {
+          _selectChoice = choice;
+        });
+      }
+
+      return FocusedMenuHolder(
+          child: Container(
+            // width: ResponsiveFlutter.of(context).wp(90),
+            // height: ResponsiveFlutter.of(context).hp(12.5),
+            child: Column(
+              children: <Widget>[
+                SizedBox(height: ResponsiveFlutter.of(context).hp(0.5),),
+                SingleChildScrollView(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      Row(
+                        children: [
+                          CircleAvatar(
+                            backgroundColor: Colors.white,
+                            radius: ResponsiveFlutter.of(context).wp(10),
+                            backgroundImage: new AssetImage('assets/pic/2962647.png'),
+                          ),
+
+                          SizedBox(width: ResponsiveFlutter.of(context).wp(2),),
+                          Column(
+                            children: <Widget>[
                               Container(
                                 width: ResponsiveFlutter.of(context).wp(40),
                                 child: Text(_farsi.replaceFarsiNumber(_journals[index]['name']),style: TextStyle(
@@ -321,90 +412,118 @@ class _MainHomeState extends State<MainHome> {
                                 ),
                                   textAlign: TextAlign.right,),
                               ),
-                            SizedBox(height: ResponsiveFlutter.of(context).hp(1),),
-                            Container(
-                              width: ResponsiveFlutter.of(context).wp(40),
-                              child: Text(_farsi.replaceFarsiNumber(_journals[index]['number']),style: TextStyle(
-                                fontSize: ResponsiveFlutter.of(context).fontSize(1.5),
+                              SizedBox(height: ResponsiveFlutter.of(context).hp(1),),
+                              Container(
+                                width: ResponsiveFlutter.of(context).wp(40),
+                                child: Text(_farsi.replaceFarsiNumber(_journals[index]['number']),style: TextStyle(
+                                  fontSize: ResponsiveFlutter.of(context).fontSize(1.5),
+                                ),
+                                  textAlign: TextAlign.right,),
                               ),
-                                textAlign: TextAlign.right,),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-
-                    // Row(
-                    //   children: [
-                    //     IconButton(
-                    //       icon: Icon(Icons.edit),
-                    //       onPressed: () => _showForm(_journals[index]['id']),
-                    //     ),
-                    //     IconButton(
-                    //       icon: Icon(Icons.delete),
-                    //       onPressed: () =>
-                    //           _deleteItem(_journals[index]['id']),
-                    //     ),
-                    //   ],
-                    // ),
-
-                    Column(
-                      children: <Widget>[
-                        PopupMenuButton<ChoiceOfTransport>(
-                          elevation: 3.2,
-                          initialValue: choices[1],
-                          onCanceled: () => print("you didn't choose anything"),
-                          tooltip: "ابزار",
-                          onSelected: _select,
-                          itemBuilder: (BuildContext context){
-                            return choices.map((ChoiceOfTransport choice) {
-                              return new PopupMenuItem<ChoiceOfTransport>(
-                                value: choice,
-                                child: new Text(choice.title),
-                                onTap: choice.inkWell.onTap,
-                              );
-                            }).toList();
-                          },
-
-                        )
-                      ],
-                    )
-                  ],
-                ),
-              ),
-              Row(children: <Widget>[
-                Expanded(
-                  child: new Container(
-                      height: 0.0,
-                      margin:  EdgeInsets.only(
-                        right: ResponsiveFlutter.of(context).wp(22),
-                        // left: ResponsiveFlutter.of(context).wp(8)
+                            ],
+                          ),
+                        ],
                       ),
-                      child: Divider(
-                        color: Colors.grey,
-                        height: 0.0,
-                      )),
+                      //
+                      // Row(
+                      //   children: [
+                      //     FloatingActionButton.extended(
+                      //       isExtended: false,
+                      //       backgroundColor: Colors.white70,
+                      //       splashColor: Colors.orange,
+                      //       icon: Icon(Icons.edit,
+                      //         color: Colors.black,
+                      //         size: ResponsiveFlutter.of(context).wp(3),),
+                      //       onPressed: () => _showForm(_journals[index]['id']),
+                      //     ),
+                      //     IconButton(
+                      //       splashColor: Colors.orange,
+                      //       iconSize: ResponsiveFlutter.of(context).wp(3),
+                      //       splashRadius: ResponsiveFlutter.of(context).wp(3),
+                      //       icon: Icon(Icons.delete),
+                      //       onPressed: () => dialogshow(context, index),
+                      //           // _deleteItem(_journals[index]['id']),
+                      //     ),
+                      //   ],
+                      // ),
+
+                      // Column(
+                      //   children: <Widget>[
+                      //     PopupMenuButton<ChoiceOfTransport>(
+                      //       elevation: 3.2,
+                      //       initialValue: choices[1],
+                      //       onCanceled: () => print("you didn't choose anything"),
+                      //       tooltip: "ابزار",
+                      //       onSelected: _select,
+                      //       itemBuilder: (BuildContext context){
+                      //         return choices.map((ChoiceOfTransport choice) {
+                      //           return new PopupMenuItem<ChoiceOfTransport>(
+                      //             value: choice,
+                      //             child: new Text(choice.title),
+                      //             onTap: (){
+                      //               dialogshow(context, index);
+                      //             },
+                      //           );
+                      //         }).toList();
+                      //       },
+                      //
+                      //     )
+                      //   ],
+                      // )
+
+                    ],
+                  ),
                 ),
-              ]),
-              SizedBox(height: ResponsiveFlutter.of(context).hp(0.5),),
-            ],
+                Row(children: <Widget>[
+                  Expanded(
+                    child: new Container(
+                        height: 0.0,
+                        margin:  EdgeInsets.only(
+                          right: ResponsiveFlutter.of(context).wp(22),
+                          // left: ResponsiveFlutter.of(context).wp(8)
+                        ),
+                        child: Divider(
+                          color: Colors.grey,
+                          height: 0.0,
+                        )),
+                  ),
+                ]),
+                SizedBox(height: ResponsiveFlutter.of(context).hp(0.5),),
+              ],
+            ),
+            // shape: RoundedRectangleBorder(
+            //     borderRadius: BorderRadius.all(
+            //         Radius.circular(35)
+            //     )
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.all(
+                  Radius.circular(35)
+              ),
+            ),
+            //   ),
+            // ],
           ),
-          // shape: RoundedRectangleBorder(
-          //     borderRadius: BorderRadius.all(
-          //         Radius.circular(35)
-          //     )
-          decoration: BoxDecoration(
-          borderRadius: BorderRadius.all(
-            Radius.circular(35)
-          ),
-          ),
-      //   ),
-      // ],
-    );
+          duration: Duration(seconds: 0),
+          animateMenuItems: false,
+          openWithTap: true,
+          onPressed: () {},
+          menuItems: [
+            FocusedMenuItem(
+                title: Text('ویرایش'),
+                onPressed: () => _showForm(_journals[index]['id']),
+                trailingIcon: Icon(Icons.edit)
+            ),
+            FocusedMenuItem(
+                title: Text('حذف'),
+                onPressed: () => dialogshow(context, index),
+                trailingIcon: Icon(Icons.delete_outline_outlined)
+              ),
+          ]
+      );
+        // children: <Widget>[
+    }
   }
 
-
-}
 
 
 
