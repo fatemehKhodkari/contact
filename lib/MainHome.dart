@@ -58,7 +58,7 @@ class _MainHomeState extends State<MainHome> {
                     contentPadding: const EdgeInsets.all(0.0),
                     insetPadding: const EdgeInsets.all(0.0),
                     actionsOverflowButtonSpacing: 0.0,
-                    backgroundColor: HexColor('FFFBED').withOpacity(0.7),
+                    backgroundColor: HexColor('FFFBED'),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.all(
                           Radius.circular(60)
@@ -164,6 +164,7 @@ class _MainHomeState extends State<MainHome> {
                                     child: Image(
                                       image: AssetImage('assets/pic/add.png'),
                                     ),
+                                    splashColor: Colors.orange,
                                     elevation: 20,
                                     onPressed: () async {
                                       // Save new journal
@@ -193,6 +194,7 @@ class _MainHomeState extends State<MainHome> {
                                     child: Image(
                                       image: AssetImage('assets/pic/remove.png'),
                                     ),
+                                    splashColor: Colors.orange,
                                     elevation: 20.0,
                                     onPressed: (){
 
@@ -234,10 +236,11 @@ class _MainHomeState extends State<MainHome> {
   void _deleteItem(int id) async {
     await SQLHelper.deleteItem(id);
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-      backgroundColor: HexColor('FFFBED').withOpacity(0.5),
+      // backgroundColor: HexColor('FFFBED'),
+      backgroundColor: Colors.orange,
       content: Text('مخاطب با موفقیت حذف شد!',
         style: TextStyle(
-          color: Colors.black87
+          color: HexColor('FFFBED')
         ),
       ),
     ));
@@ -261,14 +264,14 @@ class _MainHomeState extends State<MainHome> {
             ),
         ),
         systemOverlayStyle: SystemUiOverlayStyle(
-          statusBarColor: Colors.black87,
+          statusBarColor: Colors.orange,
         ),
         toolbarOpacity: 0.5,
         toolbarHeight: ResponsiveFlutter.of(context).hp(7),
         // backgroundColor: HexColor('bffdff'),
         // backgroundColor: HexColor('FFFBED'),
-        backgroundColor: Colors.black,
-        title: Text("مخاطبین",style: TextStyle(
+        backgroundColor: Colors.orange,
+        title: Text(" مخاطبین",style: TextStyle(
           color: HexColor('FFFBED'),
           fontSize: ResponsiveFlutter.of(context).fontSize(3),
         ),
@@ -294,7 +297,8 @@ class _MainHomeState extends State<MainHome> {
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.white.withOpacity(0.0),
         elevation: 20,
-        splashColor: HexColor('FFFBED'),
+        // splashColor: HexColor('FFFBED'),
+        splashColor: Colors.orange,
         child: Image(
           image: AssetImage('assets/pic/2962618.png'),
         ),
@@ -316,17 +320,17 @@ class _MainHomeState extends State<MainHome> {
                   contentPadding: const EdgeInsets.all(0.0),
                   insetPadding: const EdgeInsets.all(0.0),
                   actionsOverflowButtonSpacing: 0.0,
-                  backgroundColor: HexColor('FFFBED').withOpacity(0.7),
+                  backgroundColor: HexColor('FFFBED'),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.all(
                         Radius.circular(60)
                     ),
                   ),
                   content: Container(
-                    height: ResponsiveFlutter.of(context).hp(12),
+                    height: ResponsiveFlutter.of(context).hp(25),
                     child: Column(
                       children: [
-                        SizedBox(height: ResponsiveFlutter.of(context).hp(1),),
+                        SizedBox(height: ResponsiveFlutter.of(context).hp(5),),
                         Text(
                           'آیا میخواهید این مخاطب را حذف کنید؟',
                           style: TextStyle(
@@ -336,13 +340,14 @@ class _MainHomeState extends State<MainHome> {
                           ),
                           textAlign: TextAlign.right,
                         ),
+                        SizedBox(height: ResponsiveFlutter.of(context).hp(3),),
                         Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             IconButton(
-                              splashColor: HexColor('bffdff'),
-                              iconSize: ResponsiveFlutter.of(context).wp(5),
-                              splashRadius: ResponsiveFlutter.of(context).wp(5),
+                              splashColor: Colors.orange,
+                              iconSize: ResponsiveFlutter.of(context).wp(12),
+                              splashRadius: ResponsiveFlutter.of(context).wp(12),
                               icon: Icon(Icons.cancel_outlined),
                               onPressed: () {
                                 Navigator.of(context).pop();
@@ -350,9 +355,9 @@ class _MainHomeState extends State<MainHome> {
                             ),
                             IconButton(
                               splashColor: HexColor('bffdff'),
-                              iconSize: ResponsiveFlutter.of(context).wp(5),
-                              splashRadius: ResponsiveFlutter.of(context).wp(5),
-                              icon: Icon(Icons.delete_outline_outlined,color: Colors.red,),
+                              iconSize: ResponsiveFlutter.of(context).wp(12),
+                              splashRadius: ResponsiveFlutter.of(context).wp(12),
+                              icon: Icon(Icons.delete_outline_outlined,color: Colors.orange,),
                               onPressed: () {
                                 _deleteItem(_journals[index]['id']);
                                 Navigator.of(context).pop();
@@ -463,7 +468,7 @@ class _MainHomeState extends State<MainHome> {
                 trailingIcon: Icon(Icons.edit_outlined)
             ),
             FocusedMenuItem(
-              backgroundColor: Colors.red,
+              backgroundColor: Colors.orange,
                 title: Text('حذف',
                   style: TextStyle(
                     fontSize: ResponsiveFlutter.of(context).fontSize(2),
@@ -476,7 +481,9 @@ class _MainHomeState extends State<MainHome> {
                   color: Colors.white,
                 )
               ),
-          ]
+          ],
+        blurBackgroundColor: Colors.orange,
+        blurSize: 2.5,
       );
         // children: <Widget>[
     }

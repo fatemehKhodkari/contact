@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
       home: MainHome(),
       title: "contact",
       theme: ThemeData(
-        // primarySwatch: HexColor('FFFBED'),
+        primarySwatch: Colors.orange,
       ),
       localizationsDelegates: [
         GlobalMaterialLocalizations.delegate,
