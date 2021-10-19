@@ -269,7 +269,7 @@ class _MainHomeState extends State<MainHome> {
         // backgroundColor: HexColor('FFFBED'),
         backgroundColor: Colors.black,
         title: Text("مخاطبین",style: TextStyle(
-          color: Colors.white,
+          color: HexColor('FFFBED'),
           fontSize: ResponsiveFlutter.of(context).fontSize(3),
         ),
         textAlign: TextAlign.right,),
