@@ -424,53 +424,6 @@ class _MainHomeState extends State<MainHome> {
                           ),
                         ],
                       ),
-                      //
-                      // Row(
-                      //   children: [
-                      //     FloatingActionButton.extended(
-                      //       isExtended: false,
-                      //       backgroundColor: Colors.white70,
-                      //       splashColor: Colors.orange,
-                      //       icon: Icon(Icons.edit,
-                      //         color: Colors.black,
-                      //         size: ResponsiveFlutter.of(context).wp(3),),
-                      //       onPressed: () => _showForm(_journals[index]['id']),
-                      //     ),
-                      //     IconButton(
-                      //       splashColor: Colors.orange,
-                      //       iconSize: ResponsiveFlutter.of(context).wp(3),
-                      //       splashRadius: ResponsiveFlutter.of(context).wp(3),
-                      //       icon: Icon(Icons.delete),
-                      //       onPressed: () => dialogshow(context, index),
-                      //           // _deleteItem(_journals[index]['id']),
-                      //     ),
-                      //   ],
-                      // ),
-
-                      // Column(
-                      //   children: <Widget>[
-                      //     PopupMenuButton<ChoiceOfTransport>(
-                      //       elevation: 3.2,
-                      //       initialValue: choices[1],
-                      //       onCanceled: () => print("you didn't choose anything"),
-                      //       tooltip: "ابزار",
-                      //       onSelected: _select,
-                      //       itemBuilder: (BuildContext context){
-                      //         return choices.map((ChoiceOfTransport choice) {
-                      //           return new PopupMenuItem<ChoiceOfTransport>(
-                      //             value: choice,
-                      //             child: new Text(choice.title),
-                      //             onTap: (){
-                      //               dialogshow(context, index);
-                      //             },
-                      //           );
-                      //         }).toList();
-                      //       },
-                      //
-                      //     )
-                      //   ],
-                      // )
-
                     ],
                   ),
                 ),
