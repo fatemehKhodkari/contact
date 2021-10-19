@@ -1,4 +1,5 @@
 import 'dart:ui';
+import 'package:flutter/painting.dart';
 import 'package:focused_menu/modals.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:contact/sql_helper.dart';
@@ -436,20 +437,35 @@ class _MainHomeState extends State<MainHome> {
             //   ),
             // ],
           ),
+          menuWidth: ResponsiveFlutter.of(context).wp(40),
           duration: Duration(seconds: 0),
           animateMenuItems: false,
           openWithTap: true,
           onPressed: () {},
           menuItems: [
             FocusedMenuItem(
-                title: Text('ویرایش'),
+                title: Text('ویرایش',
+                  style: TextStyle(
+                    fontSize: ResponsiveFlutter.of(context).fontSize(2),
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
                 onPressed: () => _showForm(_journals[index]['id']),
-                trailingIcon: Icon(Icons.edit)
+                trailingIcon: Icon(Icons.edit_outlined)
             ),
             FocusedMenuItem(
-                title: Text('حذف'),
+              backgroundColor: Colors.red,
+                title: Text('حذف',
+                  style: TextStyle(
+                    fontSize: ResponsiveFlutter.of(context).fontSize(2),
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white
+                  ),
+                ),
                 onPressed: () => dialogshow(context, index),
-                trailingIcon: Icon(Icons.delete_outline_outlined)
+                trailingIcon: Icon(Icons.delete_outline_outlined,
+                  color: Colors.white,
+                )
               ),
           ]
       );
