@@ -7,7 +7,6 @@ import 'package:flutter/material.dart';
 import 'package:responsive_flutter/responsive_flutter.dart';
 import 'farsiNumber.dart';
 // import 'Dialog.dart';
-import 'choices.dart';
 import 'package:focused_menu/focused_menu.dart';
 
 class MainHome extends StatefulWidget {
