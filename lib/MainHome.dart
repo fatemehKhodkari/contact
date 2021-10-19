@@ -364,24 +364,6 @@ class _MainHomeState extends State<MainHome> {
 
 
   Widget contactItem(context,index){
-
-      List<ChoiceOfTransport> choices = <ChoiceOfTransport> [
-        new ChoiceOfTransport(title: 'حذف',item: () {
-          dialogshow(context, index);
-        }
-        ),
-        new ChoiceOfTransport(title: 'ویرایش',item: () {
-            dialogshow(context,index);
-        }
-        ),
-      ];
-      ChoiceOfTransport _selectChoice = choices[0];
-      void _select(ChoiceOfTransport choice) async {
-        setState(() {
-          _selectChoice = choice;
-        });
-      }
-
       return FocusedMenuHolder(
           child: Container(
             // width: ResponsiveFlutter.of(context).wp(90),
