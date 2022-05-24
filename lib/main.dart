@@ -6,7 +6,6 @@ void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   const MyApp({Key key}) : super(key: key);
-//    HexColor('FFFBED').withOpacity(0.5)
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

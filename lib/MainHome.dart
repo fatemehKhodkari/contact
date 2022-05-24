@@ -107,9 +107,7 @@ class _MainHomeState extends State<MainHome> {
                                     top: ResponsiveFlutter.of(context).hp(2),
                                     bottom: ResponsiveFlutter.of(context).hp(2),
                                   ),
-                                  // HexColor('bffdff')
                                   labelText: 'نام و نام خانوادگی',
-                                  // border: InputBorder.none,
                                   prefixIcon: Icon(Icons.person_outline,color: Colors.grey,
                                     // size: 24.0
                                     size: MediaQuery.of(context).size.width/15,
@@ -142,9 +140,7 @@ class _MainHomeState extends State<MainHome> {
                                   ),
                                   hintText: _farsi.replaceFarsiNumber(''),
                                   labelText: 'تلفن',
-                                  // border: InputBorder.none,
                                   prefixIcon: Icon(Icons.phone_outlined,color: Colors.grey,
-                                    // size: 24.0
                                     size: MediaQuery.of(context).size.width/15,
                                   ),
                                 ),
@@ -182,8 +178,6 @@ class _MainHomeState extends State<MainHome> {
 
                                       // Close the bottom sheet
                                       Navigator.of(context).pop();
-                                      // Navigator.of(context).push(MaterialPageRoute(
-                                      //     builder: (context) => MainHome()));
                                       print(_nameController.text);
 
                                     },
@@ -236,7 +230,6 @@ class _MainHomeState extends State<MainHome> {
   void _deleteItem(int id) async {
     await SQLHelper.deleteItem(id);
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-      // backgroundColor: HexColor('FFFBED'),
       backgroundColor: Colors.orange,
       content: Text('مخاطب با موفقیت حذف شد!',
         style: TextStyle(
@@ -251,7 +244,6 @@ class _MainHomeState extends State<MainHome> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // backgroundColor: HexColor('FFFBED'),
       appBar: AppBar(
         shape: RoundedRectangleBorder(
           side: BorderSide(
@@ -268,8 +260,6 @@ class _MainHomeState extends State<MainHome> {
         ),
         toolbarOpacity: 0.5,
         toolbarHeight: ResponsiveFlutter.of(context).hp(7),
-        // backgroundColor: HexColor('bffdff'),
-        // backgroundColor: HexColor('FFFBED'),
         backgroundColor: Colors.orange,
         title: Text(" مخاطبین",style: TextStyle(
           color: HexColor('FFFBED'),
@@ -297,14 +287,10 @@ class _MainHomeState extends State<MainHome> {
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.white.withOpacity(0.0),
         elevation: 20,
-        // splashColor: HexColor('FFFBED'),
         splashColor: Colors.orange,
         child: Image(
           image: AssetImage('assets/pic/2962618.png'),
         ),
-        // onPressed: (){
-        //   _dialog.createAlertDialog(context);
-        // },
         onPressed: () => _showForm(null),
       )
     );
@@ -378,8 +364,6 @@ class _MainHomeState extends State<MainHome> {
   Widget contactItem(context,index){
       return FocusedMenuHolder(
           child: Container(
-            // width: ResponsiveFlutter.of(context).wp(90),
-            // height: ResponsiveFlutter.of(context).hp(12.5),
             child: Column(
               children: <Widget>[
                 SizedBox(height: ResponsiveFlutter.of(context).hp(0.5),),
@@ -427,7 +411,6 @@ class _MainHomeState extends State<MainHome> {
                         height: 0.0,
                         margin:  EdgeInsets.only(
                           right: ResponsiveFlutter.of(context).wp(22),
-                          // left: ResponsiveFlutter.of(context).wp(8)
                         ),
                         child: Divider(
                           color: Colors.grey,
@@ -438,10 +421,6 @@ class _MainHomeState extends State<MainHome> {
                 SizedBox(height: ResponsiveFlutter.of(context).hp(0.5),),
               ],
             ),
-            // shape: RoundedRectangleBorder(
-            //     borderRadius: BorderRadius.all(
-            //         Radius.circular(35)
-            //     )
             decoration: BoxDecoration(
               borderRadius: BorderRadius.all(
                   Radius.circular(35)
@@ -485,7 +464,6 @@ class _MainHomeState extends State<MainHome> {
         blurBackgroundColor: Colors.orange,
         blurSize: 2.5,
       );
-        // children: <Widget>[
     }
   }
 
